@@ -1,9 +1,10 @@
 {
-    "name":"VitahPomeloServer",
-    "version":"0.0.1",
-    "private":false,
-    "dependencies":{
-        "pomelo":"1.2.3"
-    }
+  "name": "VitahPomeloServer",
+  "version": "0.0.1",
+  "private": false,
+  "dependencies": {
+    "co": "^4.6.0",
+    "pomelo": "1.2.3",
+    "thunkify": "^2.1.2"
+  }
 }
-
