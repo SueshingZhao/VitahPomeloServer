@@ -9,7 +9,7 @@ app.set('name', 'VitahPomeloServer');
 // app configuration
 
 // 原先配置
-
+/*
 app.configure('production|development', 'connector', function() {
 	app.set('connectorConfig', {
 		connector: pomelo.connectors.sioconnector,
@@ -21,15 +21,14 @@ app.configure('production|development', 'connector', function() {
 		heartbeatInterval: 25
 	});
 });
+*/
 
-/*
 app.configure('production|development', 'connector', function() {
 	app.set('connectorConfig', {
 		connector: pomelo.connectors.hybridconnector,
 		heartbeat: 30
 	});
 });
-*/
 
 // start app
 app.start();
