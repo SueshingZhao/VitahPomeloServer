@@ -1,2 +1,3 @@
 #!/bin/sh
-pomelo start -e development
+killall node
+pomelo start -e development_local

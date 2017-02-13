@@ -23,7 +23,7 @@ app.configure('production|development', 'connector', function() {
 });
 */
 
-app.configure('production|development', 'connector', function() {
+app.configure('all', 'connector', function () {
 	app.set('connectorConfig', {
 		connector: pomelo.connectors.hybridconnector,
 		heartbeat: 30
@@ -33,6 +33,6 @@ app.configure('production|development', 'connector', function() {
 // start app
 app.start();
 
-process.on('uncaughtException', function(err) {
+process.on('uncaughtException', function (err) {
 	console.error(' Caught exception: ' + err.stack);
 });
