@@ -1,0 +1,15 @@
+{
+	"database": "VitahPomeloDemo",
+	"host": "127.0.0.1",
+	"options": {
+		"pass": "",
+		"server": {
+			"auto_reconnect": true,
+			"socketOptions": {
+				"keepAlive": 1
+			}
+		},
+		"user": ""
+	},
+	"port": 27017
+}
