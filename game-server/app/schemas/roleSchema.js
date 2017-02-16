@@ -135,6 +135,7 @@ roleSchema.methods.subDiamond = function(sub_diamond) {
 	return true;
 };
 
+// 生成json格式内容的函数
 if (!roleSchema.options.toJSON) {
 	roleSchema.options.toJSON = {};
 }
@@ -144,4 +145,5 @@ roleSchema.options.toJSON.transform = function(doc, ret) {
 	delete ret.__v;
 };
 
+// 生成Role模型
 mongoose.model('Role', roleSchema);
