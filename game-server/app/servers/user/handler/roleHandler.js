@@ -19,7 +19,7 @@ var Handler = function(app) {
  * 获取玩家信息协议
  * @return {[type]} [description]
  */
-Handler.prototype.getRoleInfo = function(msg, session, next) {
+Handler.prototype.getInfo = function(msg, session, next) {
 	// 获取客户端传上来的UID 
 	var uid = msg.uid;
 	if (!uid) {
@@ -31,6 +31,7 @@ Handler.prototype.getRoleInfo = function(msg, session, next) {
 	var onDo = function*() {
 		// 获取对应Uid的model
 		var role_model = yield thunkify(roleModel.getByUid)(uid);
+
 		return next(null, {
 			code: code.OK,
 			result: {

@@ -23,7 +23,7 @@ module.exports.getByUidNoCreate = function(uid, cb) {
  * @param  {Function} cb  [回调]
  * @return {[type]}       [description]
  */
-module.exports.getByUidNoCreate = function(uid, cb) {
+module.exports.getByUid = function(uid, cb) {
 	modelUtil.getByUid(Role, uid, function(err, role_model) {
 		if (!!err) {
 			console.error(err);
