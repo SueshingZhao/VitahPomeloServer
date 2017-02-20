@@ -20,8 +20,7 @@ var Handler = function(app) {
  * @return {[type]} [description]
  */
 Handler.prototype.getInfo = function(msg, session, next) {
-	// 获取客户端传上来的UID 
-	var uid = msg.uid;
+	var uid = session.uid;
 	if (!uid) {
 		return next(null, {
 			code: code.PARAM_ERROR

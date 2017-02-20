@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var moment = require('moment');
 
 ///////////////////////////////////////////////////////////
 
@@ -34,6 +35,11 @@ var roleSchema = new mongoose.Schema({
 		type: Number,
 		default: 0
 	}
+});
+
+roleSchema.pre('save', function(next) {
+	console.log('用户' + this.uid + '保存，时间：' + moment());
+	next();
 });
 
 /**
