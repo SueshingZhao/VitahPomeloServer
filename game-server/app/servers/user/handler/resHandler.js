@@ -6,11 +6,11 @@ var pushService = require('../../../services/pushService.js');
 
 /////////////////////////////////////////////////////////////////
 
-module.exports = function (app) {
+module.exports = function(app) {
 	return new Handler(app);
 };
 
-var Handler = function (app) {
+var Handler = function(app) {
 	this.app = app;
 };
 
@@ -18,7 +18,7 @@ var Handler = function (app) {
  * 获取玩家信息协议
  * @return {[type]} [description]
  */
-Handler.prototype.add = function (msg, session, next) {
+Handler.prototype.add = function(msg, session, next) {
 	var gold = msg.gold || 0;
 	var diamond = msg.diamond || 0;
 	var uid = session.uid;
@@ -28,7 +28,7 @@ Handler.prototype.add = function (msg, session, next) {
 		});
 	}
 
-	var onDo = function* () {
+	var onDo = function*() {
 		// 获取对应Uid的model
 		var role_model = yield thunkify(roleModel.getByUid)(uid);
 
@@ -49,7 +49,7 @@ Handler.prototype.add = function (msg, session, next) {
 		});
 	};
 
-	var onError = function (err) {
+	var onError = function(err) {
 		console.error(err);
 		return next(null, {
 			code: code.FAIL
