@@ -1,8 +1,10 @@
+'use strict';
+
 var _ = require('lodash');
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-exports.getChangedJson = function(old_json, new_json) {
+exports.getChangedJson = function (old_json, new_json) {
 	var change_json = {};
 	var self = this;
 
@@ -21,7 +23,7 @@ exports.getChangedJson = function(old_json, new_json) {
 	return change_json;
 };
 
-exports.compareJsonObejct = function(old_obj, new_obj, change_json, key) {
+exports.compareJsonObejct = function (old_obj, new_obj, change_json, key) {
 	if (old_obj.constructor == Object) {
 		if (JSON.stringify(new_obj) != JSON.stringify(old_obj)) {
 			change_json[key] = new_obj;
@@ -44,7 +46,7 @@ exports.compareJsonObejct = function(old_obj, new_obj, change_json, key) {
 /*
  * 判断该json数组每一项是不是object
  */
-exports.isJsonArrayItemObj = function(old_array, new_array) {
+exports.isJsonArrayItemObj = function (old_array, new_array) {
 	var item_is_obj = false;
 	var array_temp = old_array.length > 0 ? old_array : new_array;
 
@@ -57,7 +59,7 @@ exports.isJsonArrayItemObj = function(old_array, new_array) {
 /*
  * 获取两个json数组中的改变值列表
  */
-exports.getChangedFromObjArray = function(old_array, new_array) {
+exports.getChangedFromObjArray = function (old_array, new_array) {
 	var id_name = this.getIdName(old_array, new_array);
 	var change_json = [];
 	var union_array = _.unionWith(new_array, old_array, _.isEqual);
@@ -71,11 +73,11 @@ exports.getChangedFromObjArray = function(old_array, new_array) {
 	_.pullAllWith(remove_array, new_array, _.isEqual);
 	_.pullAllBy(remove_array, add_array, id_name);
 
-	_.each(add_array, function(item) {
+	_.each(add_array, function (item) {
 		change_json.push(item);
 	});
 
-	_.each(remove_array, function(item) {
+	_.each(remove_array, function (item) {
 		var delete_item = {};
 		delete_item[id_name] = item[id_name];
 		delete_item.del = 1;
@@ -85,7 +87,7 @@ exports.getChangedFromObjArray = function(old_array, new_array) {
 	return change_json;
 };
 
-exports.getIdName = function(old_array, new_array) {
+exports.getIdName = function (old_array, new_array) {
 	var id_name = '';
 	var array_temp = old_array.length > 0 ? old_array : new_array;
 	if (array_temp.length > 0) {
