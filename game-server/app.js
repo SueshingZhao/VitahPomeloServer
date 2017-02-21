@@ -1,6 +1,7 @@
 var pomelo = require('pomelo');
 var mongoose = require('mongoose');
 var configUtil = require('./app/util/configUtil.js');
+var status = require('pomelo-status-plugin');
 
 /**
  * Init app for client.
@@ -11,6 +12,13 @@ app.set('name', 'VitahPomeloServer');
 // app configuration
 
 app.configure('all', function() {
+
+	// pomelo-status-plugin配置
+	var status_config = configUtil.load('status');
+	app.use(status, {
+		status: status_config
+	});
+
 	// 载入mongodb数据库的配置
 	var mongodb_config = configUtil.load('mongodb');
 
