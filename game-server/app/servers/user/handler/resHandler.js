@@ -31,9 +31,14 @@ Handler.prototype.add = function(msg, session, next) {
 	var onDo = function*() {
 		// 获取对应Uid的model
 		var role_model = yield thunkify(roleModel.getByUid)(uid);
+
+		// 获取未改变前的json
 		var role_old_json = role_model.toJSON();
+
 		role_model.addGold(gold);
 		role_model.addDiamond(diamond);
+
+		// 数据库保存
 		yield thunkify(role_model.save)();
 
 		// 推送
