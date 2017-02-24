@@ -46,7 +46,9 @@ var dealSchedule = function(build_model, cb) {
 	});
 
 	var uid = build_model.uid;
-	if (build_change) {}
+	if (build_change) {
+		pushService.pushBuildModify(uid, build_old_json, build_model.toJSON());
+	}
 
 	cb();
 };

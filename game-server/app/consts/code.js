@@ -4,4 +4,8 @@ module.exports = {
 	FAIL: 500, // 失败
 
 	PARAM_ERROR: 600, // 参数错误
+
+
+	BUILD_NOT_EXIST: 10001, // 建筑不存在
+	BUILD_IS_IN_UPGRADE: 10002, // 建筑在升级中
 };
