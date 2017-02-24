@@ -89,6 +89,7 @@ if (!buildItemSchema.options.toJSON) {
 	buildItemSchema.options.toJSON = {};
 }
 buildItemSchema.options.toJSON.transform = function(doc, ret) {
+	// 时间格式以时间戳形式下发
 	ret.up_end_time = moment(ret.up_end_time).unix();
 	delete ret._id;
 };
