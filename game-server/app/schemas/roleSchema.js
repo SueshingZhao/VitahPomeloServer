@@ -21,7 +21,7 @@ var roleSchema = new mongoose.Schema({
 	// 玩家昵称
 	name: {
 		type: String,
-		default: 'testname'
+		default: 'Vitah'
 	},
 
 	// 金币
