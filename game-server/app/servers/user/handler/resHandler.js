@@ -39,7 +39,7 @@ Handler.prototype.add = function(msg, session, next) {
 		role_model.addDiamond(diamond);
 
 		// 数据库保存
-		role_model.save();
+		yield role_model.save();
 
 		// 推送
 		pushService.pushRoleModify(uid, role_old_json, role_model.toJSON());
