@@ -58,6 +58,8 @@ Handler.prototype.upgrade = function(msg, session, next) {
 		// 设置建筑升级结束时间
 		build_item.setUpEndTime(1000);
 
+		yield build_model.save();
+
 		pushService.pushBuildModify(uid, build_old_json, build_model.toJSON());
 
 		return next(null, {

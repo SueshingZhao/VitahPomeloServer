@@ -38,7 +38,7 @@ Handler.prototype.build = function(msg, session, next) {
 		var build = build_model.getBuild(new_build_id);
 		build.setUpEndTime(1000);
 
-		build_model.save();
+		yield build_model.save();
 
 		pushService.pushBuildModify(uid, build_old_json, build_model.toJSON());
 

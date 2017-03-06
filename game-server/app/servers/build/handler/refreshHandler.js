@@ -46,7 +46,7 @@ Handler.prototype.refresh = function(msg, session, next) {
 			}
 		});
 
-		build_model.save();
+		yield build_model.save();
 
 		if (model_change) {
 			pushService.pushBuildModify(uid, build_old_json, build_model.toJSON());
