@@ -12,11 +12,11 @@ var mgrUtil = require('../util/mgrUtil');
  * @param  {Function} cb      [description]
  * @return {[type]}           [description]
  */
-exports.sendBuildChange = function(role_id, params, cb) {
-	mgrUtil.sendStatusMessage(
+exports.sendBuildChange = function (role_id, params, cb) {
+    mgrUtil.sendStatusMessage(
 		[role_id],
-		eventType.ON_BUILD_CHANGE,
-		params,
-		cb
-	);
+        eventType.ON_BUILD_CHANGE,
+        params,
+        cb
+    );
 };

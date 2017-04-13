@@ -12,11 +12,11 @@ var mgrUtil = require('../util/mgrUtil');
  * @param  {Function} cb     [description]
  * @return {[type]}          [description]
  */
-exports.sendRoleChange = function(uid, params, cb) {
-	mgrUtil.sendStatusMessage(
+exports.sendRoleChange = function (uid, params, cb) {
+    mgrUtil.sendStatusMessage(
 		[uid],
-		eventType.ON_ROLE_CHANGE,
-		params,
-		cb
-	);
+        eventType.ON_ROLE_CHANGE,
+        params,
+        cb
+    );
 };

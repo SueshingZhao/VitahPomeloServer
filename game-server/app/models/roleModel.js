@@ -1,5 +1,6 @@
 'use strict';
 
+/* jshint unused: false */
 var roleSchema = require('../schemas/roleSchema');
 var mongoose = require('mongoose');
 var Role = mongoose.model('Role');
@@ -13,10 +14,10 @@ var modelUtil = require('../util/modelUtil.js');
  * @param  {Function} cb  [回调]
  * @return {[type]}       [description]
  */
-module.exports.getByUidNoCreate = function(uid, cb) {
-	Role.findOne({
-		uid: uid
-	}, cb);
+module.exports.getByUidNoCreate = function (uid, cb) {
+    Role.findOne({
+        uid: uid
+    }, cb);
 };
 
 /**
@@ -25,13 +26,13 @@ module.exports.getByUidNoCreate = function(uid, cb) {
  * @param  {Function} cb  [回调]
  * @return {[type]}       [description]
  */
-module.exports.getByUid = function(uid, cb) {
-	modelUtil.getByUid(Role, uid, function(err, role_model) {
-		if (!!err) {
-			console.error(err);
-			return cb(err);
-		}
+module.exports.getByUid = function (uid, cb) {
+    modelUtil.getByUid(Role, uid, function (err, role_model) {
+        if (!!err) {
+            console.error(err);
+            return cb(err);
+        }
 
-		cb(null, role_model);
-	});
+        cb(null, role_model);
+    });
 };

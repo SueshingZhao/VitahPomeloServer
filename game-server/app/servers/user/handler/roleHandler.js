@@ -9,44 +9,44 @@ var code = require('../../../consts/code.js');
 
 /////////////////////////////////////////////////////////////////
 
-module.exports = function(app) {
-	return new Handler(app);
+module.exports = function (app) {
+    return new Handler(app);
 };
 
-var Handler = function(app) {
-	this.app = app;
+var Handler = function (app) {
+    this.app = app;
 };
 
 /**
  * 获取玩家信息协议
  * @return {[type]} [description]
  */
-Handler.prototype.getInfo = function(msg, session, next) {
-	var uid = session.uid;
-	if (!uid) {
-		return next(null, {
-			code: code.PARAM_ERROR
-		});
-	}
+Handler.prototype.getInfo = function (msg, session, next) {
+    var uid = session.uid;
+    if (!uid) {
+        return next(null, {
+            code: code.PARAM_ERROR
+        });
+    }
 
-	var onDo = function*() {
-		// 获取对应Uid的model
-		var role_model = yield thunkify(roleModel.getByUid)(uid);
+    var onDo = function* () {
+        // 获取对应Uid的model
+        var role_model = yield thunkify(roleModel.getByUid)(uid);
 
-		return next(null, {
-			code: code.OK,
-			result: {
-				role_info: role_model.toJSON()
-			}
-		});
-	};
+        return next(null, {
+            code: code.OK,
+            result: {
+                role_info: role_model.toJSON()
+            }
+        });
+    };
 
-	var onError = function(err) {
-		console.error(err);
-		return next(null, {
-			code: code.FAIL
-		});
-	};
+    var onError = function (err) {
+        console.error(err);
+        return next(null, {
+            code: code.FAIL
+        });
+    };
 
-	co(onDo).catch(onError);
+    co(onDo).catch(onError);
 };
