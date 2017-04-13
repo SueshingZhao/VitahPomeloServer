@@ -1,3 +1,5 @@
+'use strict';
+
 var eventType = require('../consts/eventType');
 var mgrUtil = require('../util/mgrUtil');
 

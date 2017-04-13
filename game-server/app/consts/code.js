@@ -1,3 +1,5 @@
+'use strict';
+
 // 定义错误码
 module.exports = {
 	OK: 200, // 成功

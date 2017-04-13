@@ -1,3 +1,5 @@
+'use strict';
+
 var buildSchema = require('../schemas/buildSchema');
 var mongoose = require('mongoose');
 var Build = mongoose.model('Build');

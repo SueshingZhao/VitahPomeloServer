@@ -1,3 +1,5 @@
+'use strict';
+
 var roleSchema = require('../schemas/roleSchema');
 var mongoose = require('mongoose');
 var Role = mongoose.model('Role');
