@@ -3,9 +3,10 @@
 var pomelo = require('pomelo');
 var Promise = require('bluebird');
 var mongoose = require('mongoose');
-mongoose.Promise = Promise;
 var configUtil = require('./app/util/configUtil.js');
 var status = require('pomelo-status-plugin');
+
+mongoose.Promise = Promise;
 
 /**
  * Init app for client.
