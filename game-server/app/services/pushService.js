@@ -1,3 +1,5 @@
+'use strict';
+
 var roleMgr = require('../mgr/roleMgr.js');
 var buildMgr = require('../mgr/buildMgr');
 var jsonDiffUtil = require('../util/jsonDiffUtil.js');

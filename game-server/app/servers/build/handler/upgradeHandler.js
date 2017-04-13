@@ -1,3 +1,5 @@
+'use strict';
+
 var moment = require('moment');
 var co = require('co');
 var thunkify = require('thunkify');

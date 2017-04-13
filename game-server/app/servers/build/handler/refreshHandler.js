@@ -1,3 +1,5 @@
+'use strict';
+
 var _ = require('lodash');
 var co = require('co');
 var thunkify = require('thunkify');

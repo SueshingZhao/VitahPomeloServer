@@ -1,3 +1,5 @@
+'use strict';
+
 var co = require('co');
 var thunkify = require('thunkify');
 var roleModel = require('../../../models/roleModel.js');

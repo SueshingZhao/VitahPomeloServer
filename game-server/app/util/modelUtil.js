@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports.getByUid = function(model, uid, cb) {
 	// 创建成功后
 	function afterCreate(err, schema) {
