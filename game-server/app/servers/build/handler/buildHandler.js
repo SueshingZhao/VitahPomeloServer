@@ -2,8 +2,8 @@
 
 var co = require('co');
 var thunkify = require('thunkify');
-var buildModel = require('../../../models/buildModel');
 var code = require('../../../consts/code');
+var buildModel = require('../../../models/buildModel');
 var pushService = require('../../../services/pushService');
 
 /////////////////////////////////////////////////////////////////////////
