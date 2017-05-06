@@ -50,7 +50,7 @@ module.exports = function (msg, session, next) {
         }
 
         // 设置建筑升级结束时间
-        build_item.setUpEndTime(1000);
+        build_item.setUpEndTime(300);
 
         yield build_model.save();
 

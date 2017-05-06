@@ -30,7 +30,7 @@ module.exports = function (msg, session, next) {
 
         var new_build_id = build_model.addBuild(build_type);
         var build = build_model.getBuild(new_build_id);
-        build.setUpEndTime(1000);
+        build.setUpEndTime(300);
 
         yield build_model.save();
 
