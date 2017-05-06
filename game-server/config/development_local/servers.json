@@ -5,10 +5,15 @@
         "port": 4010,
         "clientPort": 3010,
         "frontend": true
-	}],
+    }],
     "user": [{
         "id": "user-server-1",
         "host": "127.0.0.1",
         "port": 4011
-	}]
+    }],
+    "building": [{
+        "id": "building-server-1",
+        "host": "127.0.0.1",
+        "port": 4012
+    }]
 }
