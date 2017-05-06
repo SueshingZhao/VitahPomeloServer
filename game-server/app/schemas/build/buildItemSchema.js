@@ -51,6 +51,10 @@ buildItemSchema.methods.getUpEndTime = function () {
     return this.up_end_time;
 };
 
+buildItemSchema.methods.getUpRemainTime = function () {
+    return moment.duration(this.up_end_time - moment()).asSeconds();
+};
+
 // 设置建筑升级结束时间
 buildItemSchema.methods.setUpEndTime = function (need_time) {
     need_time = parseInt(need_time);
