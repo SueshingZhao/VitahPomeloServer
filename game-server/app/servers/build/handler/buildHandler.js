@@ -1,10 +1,9 @@
 'use strict';
 
-var co = require('co');
-var thunkify = require('thunkify');
-var code = require('../../../consts/code');
-var buildModel = require('../../../models/buildModel');
-var pushService = require('../../../services/pushService');
+var build = require('./build/build');
+var getInfo = require('./build/getInfo');
+var upgrade = require('./build/upgrade');
+var refresh = require('./build/refresh');
 
 /////////////////////////////////////////////////////////////////////////
 
@@ -24,36 +23,17 @@ var Handler = function (app) {
  * @return {[type]}           [description]
  */
 Handler.prototype.build = function (msg, session, next) {
-    var uid = session.uid;
-    var build_type = msg.build_type;
-    if (!uid || !build_type) {
-        return next(null, {
-            code: code.PARAM_ERROR
-        });
-    }
+    build(msg, session, next);
+};
 
-    var onBuild = function* () {
-        var build_model = yield thunkify(buildModel.getByUid)(uid);
-        var build_old_json = build_model.toJSON();
+Handler.prototype.upgrade = function (msg, session, next) {
+    upgrade(msg, session, next);
+};
 
-        var new_build_id = build_model.addBuild(build_type);
-        var build = build_model.getBuild(new_build_id);
-        build.setUpEndTime(1000);
+Handler.prototype.refresh = function (msg, session, next) {
+    refresh(msg, session, next);
+};
 
-        yield build_model.save();
-
-        pushService.pushBuildModify(uid, build_old_json, build_model.toJSON());
-
-        return next(null, {
-            code: code.OK
-        });
-    };
-
-    var onError = function (err) {
-        console.error(err);
-        return next(null, {
-            code: code.FAIL
-        });
-    };
-    co(onBuild).catch(onError);
+Handler.prototype.getInfo = function (msg, session, next) {
+    getInfo(msg, session, next);
 };

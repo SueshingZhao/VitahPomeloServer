@@ -3,19 +3,11 @@
 var moment = require('moment');
 var co = require('co');
 var thunkify = require('thunkify');
-var buildModel = require('../../../models/buildModel');
-var code = require('../../../consts/code');
-var pushService = require('../../../services/pushService');
+var buildModel = require('../../../../models/buildModel');
+var code = require('../../../../consts/code');
+var pushService = require('../../../../services/pushService');
 
 /////////////////////////////////////////////////////////////////////////
-
-module.exports = function (app) {
-    return new Handler(app);
-};
-
-var Handler = function (app) {
-    this.app = app;
-};
 
 /**
  * 建筑升级协议
@@ -24,7 +16,7 @@ var Handler = function (app) {
  * @param  {Function} next    [description]
  * @return {[type]}           [description]
  */
-Handler.prototype.upgrade = function (msg, session, next) {
+module.exports = function (msg, session, next) {
     var uid = session.uid;
     var build_id = msg.build_id;
 

@@ -3,21 +3,13 @@
 var _ = require('lodash');
 var co = require('co');
 var thunkify = require('thunkify');
-var buildModel = require('../../../models/buildModel.js');
-var code = require('../../../consts/code');
-var pushService = require('../../../services/pushService');
+var buildModel = require('../../../../models/buildModel');
+var code = require('../../../../consts/code');
+var pushService = require('../../../../services/pushService');
 
 /////////////////////////////////////////////////////////////////////////
 
-module.exports = function (app) {
-    return new Handler(app);
-};
-
-var Handler = function (app) {
-    this.app = app;
-};
-
-Handler.prototype.refresh = function (msg, session, next) {
+module.exports = function (msg, session, next) {
     var uid = session.uid;
     var build_id = msg.build_id;
 
