@@ -17,13 +17,16 @@ var Handler = function (app) {
 };
 
 /**
- * 获取玩家信息协议
- * @return {[type]} [description]
+ * [add 增加资源协议]
+ * @param {[type]}   msg     [description]
+ * @param {[type]}   session [description]
+ * @param {Function} next    [description]
  */
 Handler.prototype.add = function (msg, session, next) {
+    var uid = session.uid;
     var gold = msg.gold || 0;
     var diamond = msg.diamond || 0;
-    var uid = session.uid;
+
     if (!uid) {
         return next(null, {
             code: code.PARAM_ERROR
@@ -44,7 +47,7 @@ Handler.prototype.add = function (msg, session, next) {
         yield role_model.save();
 
         // 推送
-        pushService.pushRoleModify(uid, role_old_json, role_model.toJSON());
+        pushService.pushRoleModify(role_old_json, role_model.toJSON());
 
         return next(null, {
             code: code.OK

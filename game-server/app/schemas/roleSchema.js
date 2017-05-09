@@ -85,7 +85,8 @@ roleSchema.methods.getGold = function () {
 };
 
 /**
- * 添加金币
+ * [addGold 添加金币]
+ * @param {[type]} add_gold [添加的金币数目]
  */
 roleSchema.methods.addGold = function (add_gold) {
     add_gold = parseInt(add_gold);
@@ -98,8 +99,9 @@ roleSchema.methods.addGold = function (add_gold) {
 };
 
 /**
- * 扣除金币
- * @return {[type]} [description]
+ * [subGold 扣除金币]
+ * @param  {[type]} sub_gold [扣除的金币数目]
+ * @return {[type]}          [description]
  */
 roleSchema.methods.subGold = function (sub_gold) {
     sub_gold = parseInt(sub_gold);
@@ -119,7 +121,8 @@ roleSchema.methods.getDiamond = function () {
 };
 
 /**
- * 添加钻石
+ * [addDiamond 添加钻石]
+ * @param {[type]} add_diamond [添加的钻石数量]
  */
 roleSchema.methods.addDiamond = function (add_diamond) {
     add_diamond = parseInt(add_diamond);
@@ -131,8 +134,9 @@ roleSchema.methods.addDiamond = function (add_diamond) {
 };
 
 /**
- * 扣除钻石
- * @return {[type]} [description]
+ * [subDiamond 扣除钻石]
+ * @param  {[type]} sub_diamond [扣除的钻石数目]
+ * @return {[type]}             [description]
  */
 roleSchema.methods.subDiamond = function (sub_diamond) {
     sub_diamond = parseInt(sub_diamond);

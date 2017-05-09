@@ -8,7 +8,7 @@ var buildModel = require('../../../../models/buildModel');
 /////////////////////////////////////////////////////////////////////////
 
 /**
- * 建筑建造协议
+ * [exports 获取用户的建筑信息协议]
  * @param  {[type]}   msg     [description]
  * @param  {[type]}   session [description]
  * @param  {Function} next    [description]

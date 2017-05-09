@@ -9,6 +9,13 @@ var pushService = require('../../../../services/pushService');
 
 /////////////////////////////////////////////////////////////////////////
 
+/**
+ * [exports 建筑的刷新协议]
+ * @param  {[type]}   msg     [description]
+ * @param  {[type]}   session [description]
+ * @param  {Function} next    [description]
+ * @return {[type]}           [description]
+ */
 module.exports = function (msg, session, next) {
     var uid = session.uid;
     var build_id = msg.build_id;
@@ -43,7 +50,7 @@ module.exports = function (msg, session, next) {
         yield build_model.save();
 
         if (model_change) {
-            pushService.pushBuildModify(uid, build_old_json, build_model.toJSON());
+            pushService.pushBuildModify(build_old_json, build_model.toJSON());
         }
 
         return next(null, {

@@ -28,13 +28,14 @@ module.exports = function (msg, session, next) {
         var build_model = yield thunkify(buildModel.getByUid)(uid);
         var build_old_json = build_model.toJSON();
 
+        // 添加一个新建筑，并且设置升级结束时间
         var new_build_id = build_model.addBuild(build_type);
         var build = build_model.getBuild(new_build_id);
         build.setUpEndTime(300);
 
         yield build_model.save();
 
-        pushService.pushBuildModify(uid, build_old_json, build_model.toJSON());
+        pushService.pushBuildModify(build_old_json, build_model.toJSON());
 
         return next(null, {
             code: code.OK

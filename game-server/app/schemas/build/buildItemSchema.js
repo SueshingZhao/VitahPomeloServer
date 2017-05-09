@@ -6,6 +6,7 @@ var mongoose = require('mongoose');
 
 ///////////////////////////////////////////////////////
 
+// 单个建筑信息
 var buildItemSchema = new mongoose.Schema({
     // 建筑ID
     build_id: {
@@ -19,7 +20,7 @@ var buildItemSchema = new mongoose.Schema({
         required: true
     },
 
-    // 建筑等级
+    // 建筑等级，默认0级
     lv: {
         type: Number,
         default: 0
@@ -32,37 +33,60 @@ var buildItemSchema = new mongoose.Schema({
     }
 });
 
-// 获取建筑ID
+/**
+ * [getId 获取建筑ID]
+ * @return {[type]} [description]
+ */
 buildItemSchema.methods.getId = function () {
     return this.build_id;
 };
 
+/**
+ * [getType 获取建筑类型]
+ * @return {[type]} [description]
+ */
 buildItemSchema.methods.getType = function () {
     return this.type;
 };
 
-// 获取建筑等级
+/**
+ * [getLv 获取建筑等级]
+ * @return {[type]} [description]
+ */
 buildItemSchema.methods.getLv = function () {
     return this.lv;
 };
 
-// 获取建筑升级时间
+/**
+ * [getUpEndTime 获取建筑升级结束时间]
+ * @return {[type]} [description]
+ */
 buildItemSchema.methods.getUpEndTime = function () {
     return this.up_end_time;
 };
 
+/**
+ * [getUpRemainTime 获取建筑升级的剩余时间]
+ * @return {[type]} [description]
+ */
 buildItemSchema.methods.getUpRemainTime = function () {
     return moment.duration(this.up_end_time - moment()).asSeconds();
 };
 
-// 设置建筑升级结束时间
+/**
+ * [setUpEndTime 设置建筑升级结束时间]
+ * @param {[type]} need_time [description]
+ */
 buildItemSchema.methods.setUpEndTime = function (need_time) {
     need_time = parseInt(need_time);
     need_time = _.max([need_time, 0]);
     this.up_end_time = moment().add(need_time, 's');
 };
 
-// 判断升级结束时间是否结束
+/**
+ * [isUpgradeTimeUp 判断升级时间是否结束]
+ * @return {Boolean} [description]
+ */
 buildItemSchema.methods.isUpgradeTimeUp = function () {
     if (moment() >= moment(this.up_end_time) && moment(this.up_end_time).unix() != moment(0).unix()) {
         return true;

@@ -54,7 +54,7 @@ module.exports = function (msg, session, next) {
 
         yield build_model.save();
 
-        pushService.pushBuildModify(uid, build_old_json, build_model.toJSON());
+        pushService.pushBuildModify(build_old_json, build_model.toJSON());
 
         return next(null, {
             code: code.OK,

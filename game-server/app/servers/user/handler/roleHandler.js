@@ -3,8 +3,6 @@
 var co = require('co');
 var thunkify = require('thunkify');
 var roleModel = require('../../../models/roleModel.js');
-
-// 错误码定义文件
 var code = require('../../../consts/code.js');
 
 /////////////////////////////////////////////////////////////////
@@ -18,8 +16,11 @@ var Handler = function (app) {
 };
 
 /**
- * 获取玩家信息协议
- * @return {[type]} [description]
+ * [getInfo 获取用户基本信息协议]
+ * @param  {[type]}   msg     [description]
+ * @param  {[type]}   session [description]
+ * @param  {Function} next    [description]
+ * @return {[type]}           [description]
  */
 Handler.prototype.getInfo = function (msg, session, next) {
     var uid = session.uid;

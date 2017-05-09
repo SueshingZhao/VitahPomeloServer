@@ -13,7 +13,12 @@ var jsonDiffUtil = require('../util/jsonDiffUtil.js');
  * @param  {[type]} new_json [description]
  * @return {[type]}          [description]
  */
-exports.pushRoleModify = function (uid, old_json, new_json) {
+exports.pushRoleModify = function (old_json, new_json) {
+    var uid = old_json.uid;
+    if (!uid || !new_json.uid || uid != new_json.uid) {
+        return;
+    }
+
     var params = jsonDiffUtil.getChangedJson(old_json, new_json);
     roleMgr.sendRoleChange(
         uid,
@@ -34,7 +39,12 @@ exports.pushRoleModify = function (uid, old_json, new_json) {
  * @param  {[type]} new_json [description]
  * @return {[type]}          [description]
  */
-exports.pushBuildModify = function (uid, old_json, new_json) {
+exports.pushBuildModify = function (old_json, new_json) {
+    var uid = old_json.uid;
+    if (!uid || !new_json.uid || uid != new_json.uid) {
+        return;
+    }
+
     var params = jsonDiffUtil.getChangedJson(old_json, new_json);
     buildMgr.sendBuildChange(
         uid,
