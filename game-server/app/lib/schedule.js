@@ -1,13 +1,13 @@
 'use strict';
 
 var schedule = require('pomelo-schedule');
-var userAddRes = require('./schedule/userAddRes');
+var userAddDiamond = require('./schedule/userAddDiamond');
 
 ////////////////////////////////////////////////////////////////////
 
 schedule.scheduleJob(
     '0 0/1 * * * *',
-    userAddRes, {
+    userAddDiamond, {
         name: 'addDiamond'
     }
 );
