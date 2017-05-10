@@ -38,6 +38,7 @@ app.configure('all', function() {
 
 	// 监控请求响应时间，如果超时就给出警告
 	app.filter(pomelo.timeout());
+
 });
 
 
@@ -63,6 +64,9 @@ app.configure('all', 'connector', function() {
 		connector: pomelo.connectors.hybridconnector,
 		heartbeat: 30
 	});
+
+	// 引入定时任务
+	require('./app/lib/schedule.js');
 });
 
 // start app
