@@ -5,6 +5,7 @@
   "dependencies": {
     "co": "^4.6.0",
     "grunt": "^1.0.1",
+    "grunt-mocha-cli": "^3.0.0",
     "grunt-mocha-test": "^0.13.2",
     "lodash": "^4.17.4",
     "mocha": "^3.4.1",
