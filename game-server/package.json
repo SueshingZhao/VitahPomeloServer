@@ -1,22 +1,20 @@
 {
-  "name": "VitahPomeloServer",
-  "version": "0.0.1",
-  "private": false,
-  "dependencies": {
-    "co": "^4.6.0",
-    "grunt": "^1.0.1",
-    "grunt-mocha-cli": "^3.0.0",
-    "grunt-mocha-test": "^0.13.2",
-    "lodash": "^4.17.4",
-    "mocha": "^3.4.1",
-    "moment": "^2.17.1",
-    "mongoose": "^4.8.2",
-    "pomelo": "1.2.3",
-    "pomelo-scheduler": "^0.5.0",
-    "pomelo-status-plugin": "0.0.6",
-    "thunkify": "^2.1.2"
-  },
-  "devDependencies": {
-    "grunt-contrib-jshint": "^1.1.0"
-  }
+	"name": "VitahPomeloServer",
+	"version": "0.0.1",
+	"private": false,
+	"dependencies": {
+		"co": "^4.6.0",
+		"grunt": "^1.0.1",
+		"lodash": "^4.17.4",
+		"moment": "^2.17.1",
+		"mongoose": "^4.8.2",
+		"pomelo": "1.2.3",
+		"pomelo-scheduler": "^0.5.0",
+		"pomelo-status-plugin": "0.0.6",
+		"should": "^11.2.1",
+		"thunkify": "^2.1.2"
+	},
+	"devDependencies": {
+		"grunt-contrib-jshint": "^1.1.0"
+	}
 }
