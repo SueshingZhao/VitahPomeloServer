@@ -16,6 +16,7 @@ var jsonDiffUtil = require('../util/jsonDiffUtil.js');
 exports.pushRoleModify = function (old_json, new_json) {
     var uid = old_json.uid;
     if (!uid || !new_json.uid || uid != new_json.uid) {
+        console.error('pushRoleModify param error');
         return;
     }
 
@@ -42,6 +43,7 @@ exports.pushRoleModify = function (old_json, new_json) {
 exports.pushBuildModify = function (old_json, new_json) {
     var uid = old_json.uid;
     if (!uid || !new_json.uid || uid != new_json.uid) {
+        console.error('pushBuildModify param error');
         return;
     }
 

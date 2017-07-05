@@ -3,8 +3,7 @@
 var co = require('co');
 var thunkify = require('thunkify');
 var code = require('../../../../consts/code');
-var buildModel = require('../../../../models/buildModel');
-var pushService = require('../../../../services/pushService');
+var PlayerManager = require('../../../../lib/playerManager');
 
 /////////////////////////////////////////////////////////////////////////
 
@@ -25,17 +24,16 @@ module.exports = function (msg, session, next) {
     }
 
     var onBuild = function* () {
-        var build_model = yield thunkify(buildModel.getByUid)(uid);
-        var build_old_json = build_model.toJSON();
+        var player = new PlayerManager(uid);
+        yield thunkify(player.loadModel).call(player, ['build']);
 
         // 添加一个新建筑，并且设置升级结束时间
-        var new_build_id = build_model.addBuild(build_type);
-        var build = build_model.getBuild(new_build_id);
+        var new_build_id = player.build.addBuild(build_type);
+        var build = player.build.getBuild(new_build_id);
         build.setUpEndTime(300);
 
-        yield build_model.save();
-
-        pushService.pushBuildModify(build_old_json, build_model.toJSON());
+        yield thunkify(player.save).call(player);
+        player.pushModify();
 
         return next(null, {
             code: code.OK

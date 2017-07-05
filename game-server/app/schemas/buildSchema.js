@@ -90,7 +90,6 @@ if (!buildingSchema.options.toJSON) {
 }
 /* jshint unused:false */
 buildingSchema.options.toJSON.transform = function (doc, ret) {
-    delete ret.uid;
     delete ret.build_max_id;
     delete ret._id;
     delete ret.__v;

@@ -2,9 +2,8 @@
 
 var co = require('co');
 var thunkify = require('thunkify');
-var roleModel = require('../../../models/roleModel.js');
 var code = require('../../../consts/code.js');
-var pushService = require('../../../services/pushService.js');
+var PlayerManager = require('../../../lib/playerManager');
 
 /////////////////////////////////////////////////////////////////
 
@@ -34,20 +33,15 @@ Handler.prototype.add = function (msg, session, next) {
     }
 
     var onDo = function* () {
-        // 获取对应Uid的model
-        var role_model = yield thunkify(roleModel.getByUid)(uid);
+        var player = new PlayerManager(uid);
+        yield thunkify(player.loadModel).call(player, ['role']);
 
-        // 获取未改变前的json
-        var role_old_json = role_model.toJSON();
-
-        role_model.addGold(gold);
-        role_model.addDiamond(diamond);
+        player.role.addGold(gold);
+        player.role.addDiamond(diamond);
 
         // 数据库保存
-        yield role_model.save();
-
-        // 推送
-        pushService.pushRoleModify(role_old_json, role_model.toJSON());
+        yield thunkify(player.save).call(player);
+        player.pushModify();
 
         return next(null, {
             code: code.OK
