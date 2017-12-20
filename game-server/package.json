@@ -4,6 +4,9 @@
   "private": false,
   "dependencies": {
     "co": "^4.6.0",
+    "grunt": "^1.0.1",
+    "grunt-contrib-jshint": "^1.1.0",
+    "grunt-jsbeautifier": "^0.2.13",
     "lodash": "^4.17.4",
     "moment": "^2.17.1",
     "mongoose": "^4.13.7",
