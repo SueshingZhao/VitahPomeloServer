@@ -1,5 +1,14 @@
 #!/bin/sh
 
+#/*==========================================================
+#* Author        : vitah
+#* Mail          : vitahlin@163.com
+#* Created       : 2017-08-08 14:42
+#* Last modified : 2017-08-08 14:42
+#* Filename      : sgp.sh
+#* Description   : git规范化提交脚本
+#==========================================================*/
+
 myGitType=0
 gitDetail=""
 repeatInput="Y"
@@ -34,36 +43,36 @@ function setGitDetail(){
 case $myGitType in
 	1) echo "选择($myGitType) Feat:添加新特性，请输入具体内容:"
 		read inputStr
-		gitDetail="Feat:$inputStr"
+		gitDetail="Feat：$inputStr"
 		;;
 	2) echo "选择($myGitType) Fix:修复BUG，请输入具体内容:"
 		read inputStr
-		gitDetail="Fix:$inputStr"
+		gitDetail="Fix：$inputStr"
 		;;
 	3) echo "选择($myGitType) Docs:修改文档，请输入具体内容:"
 		read inputStr
-		gitDetail="Docs:$inputStr"
+		gitDetail="Docs：$inputStr"
 		;;
 	4) echo "选择($myGitType) Style:修改空格、格式缩进等等，请输入具体内容:"
 		read inputStr
 		myGitInfo=$inputStr
-		gitDetail="Style:$inputStr"
+		gitDetail="Style：$inputStr"
 		;;
 	5) echo "选择($myGitType) Refactor:代码重构，不是新增功能，也不是修改BUG，请输入具体内容:"
 		read inputStr
-		gitDetail="Refactor:$inputStr"
+		gitDetail="Refactor：$inputStr"
 		;;
 	6) echo "选择($myGitType) Perf:增加代码性能测试，请输入具体内容:"
 		read inputStr
-		gitDetail="Perf:$inputStr"
+		gitDetail="Perf：$inputStr"
 		;;
 	7) echo "选择($myGitType) Test:增加测试用例，请输入具体内容:"
 		read inputStr
-		gitDetail="Test:$inputStr"
+		gitDetail="Test：$inputStr"
 		;;
 	8) echo "选择($myGitType) Chore:改变构建流程，或者增加依赖库、工具等，请输入具体内容:"
 		read inputStr
-		gitDetail="Chore:$inputStr"
+		gitDetail="Chore：$inputStr"
 		;;
 esac
 
@@ -93,6 +102,7 @@ done
 }
 
 # 运行
+git status
 setGitType
 checkInput
 setGitDetail
